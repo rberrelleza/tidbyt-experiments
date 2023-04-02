@@ -24,6 +24,8 @@ def main():
             cross_align = "center", 
             children = [
                 render.Marquee(
+                    offset_start = 30,
+                    align = "center",
                     width = 64,
                     child = render.Text(get_message(), color="#FDDA0D"),
                 ),
