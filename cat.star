@@ -1,3 +1,4 @@
+load("cache.star", "cache")
 load("encoding/base64.star", "base64")
 load("random.star", "random")
 load("render.star", "render")
@@ -18,7 +19,12 @@ def get_message():
     random_index = random.number(0, len(messages) - 1)
     return  messages[random_index]
 
-def main():
+def main(config):
+    message = cache.get("message")
+    if message == None:
+        message = get_message()
+        cache.set("message", message, ttl_seconds=30)    
+    
     return render.Root(
         child = render.Column(
             cross_align = "center", 
@@ -27,7 +33,7 @@ def main():
                     offset_start = 30,
                     align = "center",
                     width = 64,
-                    child = render.Text(get_message(), color="#FDDA0D"),
+                    child = render.Text(message, color="#FDDA0D"),
                 ),
                 render.Image(src = CAT_IMAGE)
             ],

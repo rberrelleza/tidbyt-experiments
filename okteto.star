@@ -18,14 +18,25 @@ def main():
                     cross_align = "center",
                     children=[
                         render.Image(src = OKTETO_IMAGE_LOGO),
-                        render.Row(
+                        render.Column(
                             children=[
                             render.WrappedText(
-                                content="Welcome to the okteto up club!", 
+                                content="WELCOME TO THE", 
+                                color="#FFF", 
+                                align="left",
+                                font=""),
+                            render.WrappedText(
+                                content="okteto up", 
                                 color="#00D1CA", 
                                 align="left",
                                 font=""),
-                            ]
+                            render.WrappedText(
+                                content="CLUB!", 
+                                color="#FFF", 
+                                align="left",
+                                font=""),
+                            ],
+                            
                         )
                         
                     ]
